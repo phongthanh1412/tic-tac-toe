@@ -160,7 +160,7 @@ body {
 
 /* Winning square highlight */
 .winning-square {
-  background: #4a5f7d !important;
+  background: #4a5f7d;
   box-shadow: 0 0 20px rgba(100, 200, 255, 0.6);
   animation: pulse 1s ease-in-out infinite;
 }
@@ -219,19 +219,25 @@ body {
   width: 100%;
 }
 
-.sort-button {
-  background: #1976d2 !important;
-  border: 2px solid #1565c0 !important;
-  color: white !important;
+.game-info .sort-button {
+  background: #1976d2;
+  border: 2px solid #1565c0;
+  color: white;
   font-weight: 600;
   margin-bottom: 20px;
-  text-align: center !important;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 16px;
+  width: 100%;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
-.sort-button:hover {
-  background: #1565c0 !important;
-  border-color: #0d47a1 !important;
-  transform: none !important;
+.game-info .sort-button:hover {
+  background: #1565c0;
+  border-color: #0d47a1;
+  transform: none;
 }
 
 .reset-button {

@@ -50,6 +50,26 @@ function Board({ xIsNext, squares, onPlay, winningLine }) {
   );
 }
 
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return { player: squares[a], line: lines[i] };
+    }
+  }
+  return null;
+}
+
 export default function Game() {
   const [history, setHistory] = useState([{ squares: Array(9).fill(null), location: null }]);
   const [currentMove, setCurrentMove] = useState(0);
@@ -144,31 +164,11 @@ export default function Game() {
         </div>
         <div className="game-info">
           <button className="sort-button" onClick={toggleSort}>
-            Sort: {isAscending ? '↓ Descending' : '↑ Ascending'}
+            Sort {isAscending ? 'Descending' : 'Ascending'}
           </button>
           <ol reversed={!isAscending}>{sortedMoves}</ol>
         </div>
       </div>
     </div>
   );
-}
-
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return { player: squares[a], line: lines[i] };
-    }
-  }
-  return null;
 }
